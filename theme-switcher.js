@@ -409,8 +409,8 @@ document.addEventListener('DOMContentLoaded', () => {
         const theme = themes.find(t => t.id === saved);
         if (theme) applyTheme(theme);
     } else {
-        // Mark default as active
-        const defaultSwatch = document.querySelector('[data-theme="dark-orange"]');
-        if (defaultSwatch) defaultSwatch.classList.add('active');
+        // Default: Claro Violeta
+        const defaultTheme = themes.find(t => t.id === 'light-violet');
+        if (defaultTheme) applyTheme(defaultTheme);
     }
 });
