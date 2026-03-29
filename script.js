@@ -2,6 +2,16 @@
 // elINFATIGABLE - JavaScript
 // ========================================
 
+// ---- Preloader ----
+window.addEventListener('load', () => {
+    const preloader = document.getElementById('preloader');
+    if (preloader) {
+        setTimeout(() => {
+            preloader.classList.add('hidden');
+        }, 1300);
+    }
+});
+
 document.addEventListener('DOMContentLoaded', () => {
 
     // ---- Navbar scroll effect ----
@@ -135,6 +145,32 @@ document.addEventListener('DOMContentLoaded', () => {
 
             // Scroll to success message
             wrapper.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        });
+    }
+
+    // ---- FAQ Accordion ----
+    const faqItems = document.querySelectorAll('.faq-item');
+    faqItems.forEach(item => {
+        const question = item.querySelector('.faq-question');
+        question.addEventListener('click', () => {
+            const isActive = item.classList.contains('active');
+            // Close all
+            faqItems.forEach(i => i.classList.remove('active'));
+            // Open clicked (if wasn't active)
+            if (!isActive) {
+                item.classList.add('active');
+            }
+        });
+    });
+
+    // ---- Back to top ----
+    const backToTop = document.getElementById('backToTop');
+    if (backToTop) {
+        window.addEventListener('scroll', () => {
+            backToTop.classList.toggle('visible', window.scrollY > 600);
+        });
+        backToTop.addEventListener('click', () => {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
         });
     }
 
